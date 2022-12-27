@@ -67,13 +67,15 @@ def checkPalindrome(s,i):
         else:
             letsloop = False 
 
-# 
-# Main 
-# 
+######## 
+# Main # 
+######## 
 
 myS = sys.stdin.readlines()[0].rstrip()
 
 longestPalindromPos = 0
+# We start at the middle point of the string. 
+# If the length is even, then the middle point will be a decimal (with a decimal part of 0.5 only) 
 if len(myS)%2 == 0:
     midPoint = len(myS)/2 - 0.5
     longestPalindrom = 0
@@ -82,7 +84,7 @@ else:
     longestPalindrom = 1 
 
 theStartTime=time.time()
-if midPoint != 0:
+if midPoint != 0: # remove the case where the string is empty 
     i = midPoint 
     while i > 0: # from middle to left 
         checkPalindrome(myS,i)
@@ -95,7 +97,7 @@ if midPoint != 0:
 theEndTime=time.time()
 
 if longestPalindrom > 1 or midPoint == 0: 
-    if longestPalindromPos%1 == 0:
+    if longestPalindromPos%1 == 0: # check whether the longest palindrom has an even length or not
         fromP = int(longestPalindromPos - int(longestPalindrom/2))
     else:
         fromP = int(longestPalindromPos - longestPalindrom/2 + 1)
